@@ -1,18 +1,19 @@
-## Time/Overtime tracking
+##Time/Overtime tracking
 
 #MODELS
 
--POST
--USER
--AdminUser
+- POST
+- USER
+- AdminUser
 
 #FEATURES 
 
 --Approval Workflow
--SMS Notifications --> link to approval or overtime input
--Administrate admin dashboard
--EMAIL summary to administrators for approval
--Documentation in case of employees' rejection of overtime
+
+- SMS Notifications --> link to approval or overtime input
+- Administrate admin dashboard
+- EMAIL summary to administrators for approval
+- Documentation in case of employees' rejection of overtime
 
 #STACK
-HTML5, CSS3, Ruby on Rails, JavaScript, Bootstrap, Rspec, Twilio API.
+- HTML5, CSS3, Ruby on Rails, JavaScript, Bootstrap, Rspec, Twilio API.
