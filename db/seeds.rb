@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+50.times do |post|
+	Post.create!(date: Date.today, rationale: "#{post} rationale")
+	puts "100 posts have been created"
+end
