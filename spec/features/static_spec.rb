@@ -1,6 +1,4 @@
-# spec/features/static_spec.rb
-
-require 'rails_helper'
+require 'spec_helper'
 
 describe 'navigate' do
   describe 'homepage' do
