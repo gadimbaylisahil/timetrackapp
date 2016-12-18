@@ -8,5 +8,5 @@
 
 50.times do |post|
 	Post.create!(date: Date.today, rationale: "#{post} rationale")
-	puts "100 posts have been created"
 end
+puts "100 posts have been created"
