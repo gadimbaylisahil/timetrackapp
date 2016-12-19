@@ -2,12 +2,15 @@
 	<h1>Overtime App for Enterprises</h1>
 </div>
 <ul class="custom-nav nav nav-tabs">
-	<li class="active">
+	
+	<li class="<%= active?(root_path) %>">
 		<%= link_to "Home", root_path %>
 	</li>
-	<li>
+	
+	<li class="<%= active?(posts_path) %>">
 		<%= link_to "Overtime Entries", posts_path %>
 	</li>
+
 	<li class="dropdown pull-right">
 		<a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong>
 		</a>
