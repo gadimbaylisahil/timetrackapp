@@ -64,24 +64,30 @@ describe 'navigate' do
 			expect(User.last.posts.last.rationale).to eq("User_Association")
 		end
 	end
-
+	# CHANGE / REFACTOR THIS TEST LATER ON!!!
 	describe 'edit' do
-		before do 
-			@post = FactoryGirl.create(:post)
-		end
-
-		it 'can be reached by clicking on edit link' do
-			visit posts_path
-			click_link("edit_#{@post.id}") 
-			expect(page.status_code).to eq(200)
-		end
+	    before do
+	      	@edit_user = User.create(first_name: "asdf", last_name: "asdf", email: "asdfasdf@asdf.com", password: "asdfasdf", password_confirmation: "asdfasdf")
+	      	login_as(@edit_user, :scope => :user)
+	      	@edit_post = Post.create(date: Date.today, rationale: "asdf", user_id: @edit_user.id)
+    	end
 
 		it 'can be edited' do 
-			visit edit_post_path(@post)
+			visit edit_post_path(@edit_post)
 			fill_in 'post[date]', with: Date.today
 			fill_in 'post[rationale]', with: "Edited Content"
 			click_on "Save"
 			expect(page).to have_content("Edited Content")
 		end
+
+		it 'cannot be edited by a non-admin or non-authorized user' do 
+			logout(:edit_user)
+			non_authorized_user = FactoryGirl.create(:non_authorized_user)
+			login_as(non_authorized_user, :scope => :user)
+			
+			visit edit_post_path(@edit_post)
+
+			expect(current_path).to eq(root_path)
+		end 
 	end
 end
