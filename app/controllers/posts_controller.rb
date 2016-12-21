@@ -19,9 +19,14 @@ class PostsController < ApplicationController
 	end
 
 	def edit
+		#punpit authorizes method
+		authorize @post
 	end
 
 	def update
+		#punpit authorizes method
+		authorize @post
+
 		if @post.update(post_params)
 			redirect_to @post, notice: 'Post has been updated successfully!'
 		else 
