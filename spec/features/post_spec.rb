@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 describe 'navigate' do
+	let(:user) { FactoryGirl.create(:user) }
+
+	let(:post) do 
+		Post.create(date: Date.today, rationale: "Rationale", user_id: user.id)
+	end
+
 	before do
-		@user = FactoryGirl.create(:user)
-		login_as(@user, :scope => :user)
+		login_as(user, :scope => :user)
 	end 
 	describe 'index' do
 		before do 
@@ -26,8 +31,8 @@ describe 'navigate' do
 		end
 
 		it 'only lets post creators to see their own posts' do 
-			post1 = Post.create(date: Date.today, rationale: "some rationale", user_id: @user.id)
-			post1 = Post.create(date: Date.today, rationale: "some rationale", user_id: @user.id)
+			post1 = Post.create(date: Date.today, rationale: "some rationale", user_id: user.id)
+			post1 = Post.create(date: Date.today, rationale: "some rationale", user_id: user.id)
 
 			other_user = User.create(first_name: 'Test', last_name: "TestSurname", email: "some@some.com", password: "123456", password_confirmation: "123456")
 			post_from_other_user = Post.create(date: Date.today, rationale: "some rationale shouldnt be seen", user_id: other_user.id)
@@ -47,13 +52,15 @@ describe 'navigate' do
 
   describe 'delete' do
     it 'can be deleted' do
-      @post = FactoryGirl.create(:post)
-      # refactor later
-      @post.update(user_id: @user.id)
+    	logout(:user)
 
+    	user_to_delete = FactoryGirl.create(:user)
+    	login_as(user_to_delete, :scope => :user)
+
+    	post_to_delete = Post.create(date: Date.today, rationale: "Rationale", user_id: user_to_delete.id)
       visit posts_path
 
-      click_link("delete_post_#{@post.id}_from_index")
+      click_link("delete_post_#{post_to_delete.id}_from_index")
       expect(page.status_code).to eq(200)
     end
   end
@@ -81,16 +88,11 @@ describe 'navigate' do
 			expect(User.last.posts.last.rationale).to eq("User_Association")
 		end
 	end
-	# CHANGE / REFACTOR THIS TEST LATER ON!!!
+
 	describe 'edit' do
-	    before do
-	      	@edit_user = User.create(first_name: "asdf", last_name: "asdf", email: "asdfasdf@asdf.com", password: "asdfasdf", password_confirmation: "asdfasdf")
-	      	login_as(@edit_user, :scope => :user)
-	      	@edit_post = Post.create(date: Date.today, rationale: "asdf", user_id: @edit_user.id)
-    	end
 
 		it 'can be edited' do 
-			visit edit_post_path(@edit_post)
+			visit edit_post_path(post)
 			fill_in 'post[date]', with: Date.today
 			fill_in 'post[rationale]', with: "Edited Content"
 			click_on "Save"
@@ -102,7 +104,7 @@ describe 'navigate' do
 			non_authorized_user = FactoryGirl.create(:non_authorized_user)
 			login_as(non_authorized_user, :scope => :user)
 			
-			visit edit_post_path(@edit_post)
+			visit edit_post_path(post)
 
 			expect(current_path).to eq(root_path)
 		end 
