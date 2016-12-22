@@ -34,7 +34,7 @@ describe 'navigate' do
 			post1 = Post.create(date: Date.today, rationale: "some rationale", user_id: user.id)
 			post1 = Post.create(date: Date.today, rationale: "some rationale", user_id: user.id)
 
-			other_user = User.create(first_name: 'Test', last_name: "TestSurname", email: "some@some.com", password: "123456", password_confirmation: "123456")
+			other_user = User.create(first_name: 'Test', last_name: "TestSurname", email: "some@some.com", password: "123456", password_confirmation: "123456", phone: "5555555")
 			post_from_other_user = Post.create(date: Date.today, rationale: "some rationale shouldnt be seen", user_id: other_user.id, overtime_request: 3.5)
 			
 			visit posts_path
