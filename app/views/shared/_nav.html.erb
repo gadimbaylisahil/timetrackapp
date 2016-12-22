@@ -11,6 +11,8 @@
 		<li class="<%= active?(posts_path) %>">
 			<%= link_to "Overtime Entries", posts_path %>
 		</li>
+		<!-- Refactor Later! -->
+		<%= render 'shared/audit_log_tab' if policy(AuditLog).index? %>
 
 		<li class="<%= active?(new_post_path) %>">
 			<%= link_to "Add New Entry", new_post_path, id: "new_post_from_nav" %>
