@@ -31,13 +31,21 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
+# devise user registration
 gem 'devise', '~> 4.2'
+# bootstrap
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+# gritter notifications
 gem 'gritter', "1.2.0"
+# admin dashboard
 gem "administrate", "~> 0.2.2"
 gem 'bourbon'
 gem 'pundit', '~> 1.1.0'
+# puma web server
 gem 'puma', '~> 3.4'
+# twilio sms 
 gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 gem 'dotenv-rails', :groups => [:development, :test]
+# pagination
+gem 'kaminari', '~> 0.17.0' 
+
