@@ -47,5 +47,7 @@ gem 'puma', '~> 3.4'
 gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 gem 'dotenv-rails', :groups => [:development, :test]
 # pagination
-gem 'kaminari', '~> 0.17.0' 
+gem 'kaminari', '~> 0.17.0'
+# 12factors gem for smoother rails integration 
+gem 'rails_12factor'
 
