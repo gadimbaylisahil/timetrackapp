@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
 	after_save :update_audit_log
 
 	private 
+	
 		def update_audit_log
 			audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
 			audit_log.confirmed!
