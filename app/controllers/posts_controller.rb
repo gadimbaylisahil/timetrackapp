@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:show, :edit, :update, :destroy]
+	before_action :set_post, only: [:show, :edit, :update, :destroy, :approve]
 	def index
 		# post_by method in the post.rb model
 		# kaminari pagination
@@ -8,6 +8,12 @@ class PostsController < ApplicationController
 
 	def new
 		@post = Post.new
+	end
+
+	def approve
+		authorize @post
+		@post.approved!
+		redirect_to root_path, alert: "The post has been approved!"
 	end
 
 	def create
