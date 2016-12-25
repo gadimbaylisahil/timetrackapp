@@ -27,4 +27,8 @@
 ## STACK
 - HTML5, CSS3, Ruby on Rails, JavaScript, Bootstrap, Rspec, Twilio API.
 
+### Login Credentials for Users
+- Admins --> username: 'admin@admin.com' password: '123456'
+- Regular Users --> username: 'regular@regular.com' password: '123456'
+
 ### Deployed on Heroku at https://tise-overtime.herokuapp.com
