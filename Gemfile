@@ -50,5 +50,5 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'kaminari', '~> 0.17.0'
 # 12factors gem for smoother rails integration 
 gem 'rails_12factor'
-
+# alerts regarding website status
 gem 'newrelic_rpm'
