@@ -21,7 +21,7 @@ module ApplicationHelper
 			content_tag(:span, status.titleize, class: 'label label-success')
 		when 'rejected'
 			content_tag(:span, status.titleize, class: 'label label-danger')
-		when 'submitted'
+		when 'confirmed'
 			content_tag(:span, status.titleize, class: 'label label-success')
 		when 'pending'
 			content_tag(:span, status.titleize, class: 'label label-warning')
