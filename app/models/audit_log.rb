@@ -5,6 +5,8 @@ class AuditLog < ActiveRecord::Base
   enum status: { pending: 0, confirmed: 1 }
   after_initialize :set_defaults
 
+  scope :by_start_date, -> { order('start_date DESC') }
+
   before_update :set_end_date, if: :confirmed?
 
   private
