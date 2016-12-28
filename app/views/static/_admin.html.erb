@@ -1,15 +1,15 @@
 <div class="container-fluid">
 	<div class="pending-homepage row">
-		<h1>Items waiting for your approval</h1>
+		<h3>Items waiting for your approval</h3>
 		<%= render partial: 'pending_approval', locals: { pending_approvals: @pending_approvals } %>
 	</div>
 
 	<div class="pending-homepage row">
 		<div>
-			<h2>Confirmed Log</h2>
+			<h3>Confirmation Log</h3>
 			<hr>
 			<%= render partial: 'confirmation_log', locals: { recent_audit_items: @recent_audit_items } %>
-			<%= link_to 'View All Items', audit_logs_path, class: 'btn btn-primary clearfix' %>
+			<%= link_to 'View All Items', audit_logs_path, class: 'btn btn-primary col-sm-12 col-md-12 col-xs-12' %>
 		</div>
 	</div>	
 </div>
