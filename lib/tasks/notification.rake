@@ -1,4 +1,5 @@
 namespace :notification do
+  
   desc "Sends SMS notification to employees asking to log if they had overtime"
   task sms: :environment do
     if Time.now.sunday?
@@ -9,11 +10,6 @@ namespace :notification do
         AuditLog.create!(user_id: employee.id)
       end
     end
-
-  	# --> Send a notification message with instructions and link to log time
-  	# User.all.each do |user|
-  	# 	SmsTool.send_sms()
-  	# end
   end
 
   desc "Sends mail notification to managers asking to review pending overtime requests"
