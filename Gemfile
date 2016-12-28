@@ -51,3 +51,4 @@ gem 'kaminari', '~> 0.17.0'
 # 12factors gem for smoother rails integration 
 gem 'rails_12factor'
 
+gem 'newrelic_rpm'
