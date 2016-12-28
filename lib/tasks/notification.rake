@@ -2,10 +2,13 @@ namespace :notification do
   desc "Sends SMS notification to employees asking to log if they had overtime"
   task sms: :environment do
     if Time.now.sunday?
+      employees = Employee.all
+      notification_message = "Please login to dashboard to request overtime or confirm your hours for previous week: https://tise-overtime.herokuapp"
+      employees.each do |employee|
+        SmsTool.send_sms(number: employee.phone, message:notification_message)
+      end
     end
-  	# --> Schedule to run at Sunday 5pm
-  	# --> Iterate over all employees
-  	# --> Skip AdminUsers
+
   	# --> Send a notification message with instructions and link to log time
   	# User.all.each do |user|
   	# 	SmsTool.send_sms()
