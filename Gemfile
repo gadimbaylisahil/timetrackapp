@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '~> 5.0', '>= 5.0.1'
 
 gem 'pg', '~> 0.15'
 
@@ -37,8 +37,8 @@ gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # gritter notifications
 gem 'gritter', "1.2.0"
-# admin dashboard
-gem "administrate", "~> 0.2.2"
+# administrate gem for admin dashboard
+gem 'administrate', github: 'greetpoint/administrate', branch: 'rails5'
 gem 'bourbon'
 gem 'pundit', '~> 1.1.0'
 # puma web server
@@ -51,4 +51,4 @@ gem 'kaminari', '~> 0.17.0'
 # 12factors gem for smoother rails integration 
 gem 'rails_12factor'
 # alerts regarding website status
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '~> 3.15', '>= 3.15.0.314'
