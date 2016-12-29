@@ -37,12 +37,22 @@ RSpec.describe User, type: :model do
       @user.phone = "012345678910111"
       expect(@user).to_not be_valid
     end
-
   end
 
   describe "custom full name method" do
     it 'has a full name method which combines last and first name' do
       expect(@user.full_name).to eq("TestName, TestSurname")
+    end
+  end
+
+  describe 'relationship between admins and employees' do 
+    it 'allows for admins to be associated with multiple employees' do 
+      employee1 = FactoryGirl.create(:user)
+      employee2 = FactoryGirl.create(:user)
+      admin = FactoryGirl.create(:admin_user)
+      Hand.create!(user_id: admin.id, hand_id: employee1.id)
+      Hand.create!(user_id: admin.id, hand_id: employee2.id)
+      expect(admin.hands.count).to eq(2)
     end
   end
 end
