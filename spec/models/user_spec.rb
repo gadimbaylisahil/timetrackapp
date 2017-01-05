@@ -33,8 +33,28 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid 
     end
 
+    it 'required ssn attribute' do 
+      @user.ssn = nil
+      expect(@user).to_not be_valid
+    end
+
+    it 'requires a company' do
+      @user.company = nil 
+      expect(@user).to_not be_valid
+    end
+
     it 'it requires the phone attr to have maximum 14 characters' do 
       @user.phone = "012345678910111"
+      expect(@user).to_not be_valid
+    end
+
+    it 'requires the ssn to only contain integers' do
+      @user.ssn = 'mygreatstr'
+      expect(@user).to_not be_valid 
+    end
+
+    it 'it requires the ssn attr to have maximum 10 characters' do 
+      @user.ssn = "1234567891010"
       expect(@user).to_not be_valid
     end
   end
